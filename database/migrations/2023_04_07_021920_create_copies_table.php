@@ -18,10 +18,7 @@ return new class extends Migration
             $table->boolean('disponible')->default(true);
             $table->timestamps();
 
-            $table->foreign('document_id')
-                  ->references('id')
-                  ->on('documents')
-                  ->onDelete('cascade');
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
         });
     }
 

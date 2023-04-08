@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Document;
+use App\Models\Réservation;
+
 
 class DocumentController extends Controller
 {
@@ -29,17 +31,51 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+
+        // Créer un nouveau document
         $document = new Document();
 
-        $document->titre =$request->input('titre');
-        $document->type_document =$request->input('type_document');
-        $document->nom_editeur =$request->input('nom_editeur');
-        $document->auteur_principal =$request->input('auteur_principal');
-        $document->periodicite_parution =$request->input('periodicite_parution');
-        $document->cote =$request->input('cote');
-
+        $document->titre = $request->input('titre');
+        $document->type_document = $request->input('type_document');
+        $document->nom_editeur = $request->input('nom_editeur');
+        $document->auteur_principal = $request->input('auteur_principal');
+        $document->periodicite_parution = $request->input('periodicite_parution');
+        $document->cote = $request->input('cote');
+    
+        // Enregistrer le nouveau document dans la base de données
         $document->save();
+    
+        // Appeler la fonction pour réserver le document
+        $this->reserverDocument($document->id);
+    
+        // Rediriger l'utilisateur
         return redirect()->route('document.index');
+    }
+    
+    public function reserverDocument($document_id)
+    {
+        $document = Document::find($document_id);
+    
+        if ($document->nombre_de_copies > 0) {
+            // Créer la réservation
+            $reservation = new Réservation();
+            $reservation->user_id = auth()->user()->id;
+            $reservation->document_id = $document_id;
+            $reservation->start_date = now();
+            $reservation->end_date = now()->addDays(7);
+            $reservation->is_active = 1;
+            $reservation->save();
+    
+            // Décrémenter le nombre de copies disponibles
+            $document->nombre_de_copies--;
+            $document->save();
+    
+            // Afficher un message de succès
+            return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');
+        } else {
+            // Afficher un message d'erreur
+            return redirect()->back()->with('error', 'Le document n\'est pas disponible pour la réservation.');
+        }
     }
 
     /**

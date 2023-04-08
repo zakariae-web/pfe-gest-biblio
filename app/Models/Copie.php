@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Copie extends Model
 {
     use HasFactory;
+    public function document()
+{
+    return $this->belongsTo(Document::class);
+}
 }

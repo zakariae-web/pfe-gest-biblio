@@ -7,17 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-
-    <h1>ajouter un livre</h1>
-    <form action="{{route('document.store')}}" method="POST">
+<h1>modifier les informations de livre</h1>
+    <form action="{{route('document.update', ['document' => $document->id])}}" method="POST">
         @CSRF
+        @method('PUT')
         <label> titre </label>
         <input type="text" name="titre">
         <label> le type </label>
-        <select name="type_document" id="">
-            <option value="livre"> livre</option>
-            <option value="revue"> revue</option>
-        </select>
+        <input type="text" name="type_document">
         <label> nom d'editeur </label>
         <input type="text" name="nom_editeur">
         <label> auteur </label>

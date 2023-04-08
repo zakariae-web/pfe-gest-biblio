@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('auteur_principal');
             $table->string('periodicite_parution');
             $table->string('cote');
+            $table->integer('nombre_de_copies')->default(10);
             $table->timestamps();
         });
     }

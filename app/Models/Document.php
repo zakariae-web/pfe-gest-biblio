@@ -8,4 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
+
+    public function emprunter()
+    {
+        $this->nombre_de_copies--;
+        $this->save();
+    }
+
+    public function retourner()
+    {
+        $this->nombre_de_copies++;
+        $this->save();
+    }
+
+    public function copies()
+    {
+        return $this->hasMany(Copie::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }
