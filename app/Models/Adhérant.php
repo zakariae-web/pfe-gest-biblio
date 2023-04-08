@@ -13,4 +13,18 @@ class Adhérant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'user_password',
+        'user_name',
+        'card_number',
+        'adresse',
+        'nombre_livres_empruntes',
+        'departement',
+        'date_registered',
+        'date_expiration',
+        'is_active',
+    ];
+
 }
