@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('adhérants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('password');
-            $table->string('card_number');
+            $table->string('card_number')->unique();
+            $table->string('adress');
+            $table->string('nombre_livres_empruntes');
+            $table->string('departement');
             $table->date('date_registered');
             $table->date('date_expiration');
             $table->boolean('is_active')->default(true);
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

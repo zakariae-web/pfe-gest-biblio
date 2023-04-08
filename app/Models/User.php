@@ -14,6 +14,11 @@ class User extends Authenticatable
     use CrudTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function adherent()
+    {
+        return $this->hasOne(Adhérant::class);
+    }
+
     public function reservations()
     {
         return $this->hasMany(Réservation::class);

@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Adhérant;
+
 class RegisterController extends Controller
 {
     /*
@@ -64,12 +66,30 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'], // Ajouter le champ role
-        ]);
-    }
+{
+    // Générer un numéro de carte d'adhérent unique
+    $card_number = 'ADH' . str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
+
+    // Créer un nouvel utilisateur
+    $user = User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'role' => $data['role'],
+        'card_number' => $card_number, // Ajouter le numéro de carte d'adhérent généré
+    ]);
+
+    // Créer un nouvel adhérent associé à l'utilisateur
+    $user->adherent()->create([
+        'card_number' => $card_number,
+        'adress' => '',
+        'nombre_livres_empruntes' => 0,
+        'departement' => '',
+        'date_registered' => now(),
+        'date_expiration' => now()->addYear(),
+        'is_active' => true,
+    ]);
+
+    return $user;
+}
 }
