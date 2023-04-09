@@ -10,11 +10,13 @@ use App\Models\User;
 
 class ReservationController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorize('manage-documents');
         return view('reservation.index',
         ['reservation' => Réservation::all()]);
     }
@@ -77,7 +79,7 @@ class ReservationController extends Controller
         $reservation->save();
         
        
-        return redirect()->route('reservation.index');
+        return redirect()->route('document.index');
     }
 
     public function reserverDocument($document_id)
@@ -107,6 +109,7 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
+        $this->authorize('manage-documents');
         $reservation = Réservation::findorfail($id);
         return view('reservation.edit', [
             'reservation' => $reservation
@@ -118,6 +121,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('manage-documents');
         $reservation = Réservation::findorfail($id);
 
         
@@ -137,6 +141,7 @@ class ReservationController extends Controller
      */
     public function destroy(string $id)
 {
+    $this->authorize('manage-documents');
     $reservation = Réservation::findorfail($id);
     $document_id = $reservation->document_id; // retrieve the document ID from the reservation
     $reservation->delete();

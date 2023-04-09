@@ -23,10 +23,9 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::resource('document', DocumentController::class);
 Route::resource('copie', CopyController::class);
-Route::resource('reservation', ReservationController::class);
+Route::resource('reservation', ReservationController::class)->middleware('auth');
 Route::post('/documents/{document}/emprunter', [DocumentController::class, 'emprunterLivre'])->name('documents.emprunter');
 Route::post('/reservation/{document_id}/reserver', [ReservationController::class, 'reserverDocument']);
 

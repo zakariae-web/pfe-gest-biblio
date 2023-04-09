@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -25,6 +26,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
+        $this->authorize('manage-documents');
         return view('document.create');
     }
 
@@ -34,6 +36,7 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
 
+        $this->authorize('manage-documents');
         // Créer un nouveau document
         $document = new Document();
 
@@ -71,6 +74,7 @@ class DocumentController extends Controller
      */
     public function edit(string $id)
     {
+        $this->authorize('manage-documents');
         $document = Document::findorfail($id);
         return view('document.edit', [
             'document' => $document
@@ -82,6 +86,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('manage-documents');
         $document = Document::findorfail($id);
 
         $document->titre =$request->input('titre');
@@ -100,12 +105,14 @@ class DocumentController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('manage-documents');
         $document = Document::findorfail($id);
         $document->delete();
         return redirect()->route('document.index');
     }
     public function emprunterLivre(Request $request, $id)
 {
+    $this->authorize('manage-documents');
     $document = Document::find($id);
 
     if (!$document) {
