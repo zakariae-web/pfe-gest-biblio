@@ -41,7 +41,35 @@
     <section class="page-section clearfix">
         <div class="container">
             <div class="row">
-                @foreach($document as $document)
+                <div class="col">
+                    <form method="GET" action="{{ route('document.index') }}">
+                        <div class="input-container mb-3">
+                            <input type="text" name="titre" id="titre" class="input" placeholder="Rechercher par titre...">
+                            <span class="icon"> 
+                                <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                            </span>
+                        </div>
+                        <div class="mr-3 d-flex filtercat gap-3 align-items-center shadow rounded bg-dark text-light p-3">
+                            <i class="fa-solid fa-caret-right"></i>
+                            <label for="type_document">filtrage par le type :</label>
+                            <select name="type_document" id="type_document">
+                                <option value="all" class="d-flex align-items-center filter-btn gap-3 fs-5"> tous les documents</option>
+                                    <option value="livre">livre</option>
+                                    <option value="revue">revue</option>
+                            </select>
+                            <button type="submit">Filter</button>
+                        </div>
+                    </form>
+                    @if(Auth::user()->role == 'admin')
+                        <a href="{{route('document.create')}}">
+                            <button class="cssbuttons-io-button mt-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+                                <span>ajouter</span>
+                            </button>
+                        </a>
+                    @endif
+                </div>
+                @foreach($documents as $document)
                     <div class="col">
                         <div class="card">
                             <div class="img"></div>
@@ -62,12 +90,6 @@
                     </div>
                 @endforeach
             </div>
-            <a href="{{route('document.create')}}">
-                <button class="cssbuttons-io-button mt-2 mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
-                    <span>ajouter</span>
-                </button>
-            </a>
         </div>
     </section>
 </body>

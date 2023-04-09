@@ -15,11 +15,31 @@ class DocumentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('document.index',
-        ['document' => Document::all()]);
+        $documentsQuery = Document::query();
+    
+        // filter the document by category
+        if ($request->has('type_document')) {
+            $type_document = $request->type_document;
+            if ($type_document !== 'all') {
+                $documentsQuery->where('type_document', $type_document);
+            }
+        }
+    
+        // search for document by name 
+        if ($request->has('titre')) {
+            $titre = $request->titre;
+            $documentsQuery->where('titre', 'LIKE', '%' . $titre . '%');
+        }
+    
+        $documents = $documentsQuery->get();
+    
+        return view('document.index', [
+            'documents' => $documents
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
