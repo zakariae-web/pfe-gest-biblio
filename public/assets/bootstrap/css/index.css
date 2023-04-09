@@ -1,0 +1,31 @@
+#mainNav{
+    background-color:rgba(240, 248, 255, 0);
+}
+
+
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #e5c38f;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #4b2004;
+}
+
+.intro img{
+    height: 600px;
+    object-fit: cover;
+}
+
+.intro h2{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
+}
+
+.cta h2{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
+}
