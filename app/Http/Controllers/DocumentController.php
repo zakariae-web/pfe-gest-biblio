@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Document;
 use App\Models\Réservation;
+use App\Models\Adhérant;
+use Illuminate\Support\Facades\Auth;
 
 
 class DocumentController extends Controller
@@ -46,37 +48,15 @@ class DocumentController extends Controller
         $document->save();
     
         // Appeler la fonction pour réserver le document
-        $this->reserverDocument($document->id);
+        // $this->reserverDocument($document->id);
     
         // Rediriger l'utilisateur
         return redirect()->route('document.index');
     }
     
-    public function reserverDocument($document_id)
-    {
-        $document = Document::find($document_id);
     
-        if ($document->nombre_de_copies > 0) {
-            // Créer la réservation
-            $reservation = new Réservation();
-            $reservation->user_id = auth()->user()->id;
-            $reservation->document_id = $document_id;
-            $reservation->start_date = now();
-            $reservation->end_date = now()->addDays(7);
-            $reservation->is_active = 1;
-            $reservation->save();
-    
-            // Décrémenter le nombre de copies disponibles
-            $document->nombre_de_copies--;
-            $document->save();
-    
-            // Afficher un message de succès
-            return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');
-        } else {
-            // Afficher un message d'erreur
-            return redirect()->back()->with('error', 'Le document n\'est pas disponible pour la réservation.');
-        }
-    }
+
+
 
     /**
      * Display the specified resource.
@@ -124,4 +104,22 @@ class DocumentController extends Controller
         $document->delete();
         return redirect()->route('document.index');
     }
+    public function emprunterLivre(Request $request, $id)
+{
+    $document = Document::find($id);
+
+    if (!$document) {
+        return back()->withError('Livre non trouvé.');
+    }
+
+    $adherent = Auth::user()->adherent;
+
+
+    $document->emprunter();
+    $adherent->nombre_livres_empruntes++;
+    $adherent->save();
+
+    return redirect()->route('document.index', $document->id)->withSuccess('Livre emprunté avec succès.');
+}
+
 }

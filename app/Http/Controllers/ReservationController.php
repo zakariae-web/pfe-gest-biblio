@@ -62,7 +62,8 @@ class ReservationController extends Controller
         if ($active_reservations_count >= $max_reservations) {
             return redirect()->back()->with('error', 'Vous avez atteint la limite de réservations pour votre type d\'utilisateur.');
         }
-    
+        
+
         // Continuer avec la création de la réservation
         $reservation = new Réservation();
     
@@ -71,10 +72,26 @@ class ReservationController extends Controller
         $reservation->start_date = $request->input('start_date');
         $reservation->end_date = $request->input('end_date');
         $reservation->is_active = true;
+    $this->reserverDocument($reservation->document_id);
 
         $reservation->save();
         
+       
         return redirect()->route('reservation.index');
+    }
+
+    public function reserverDocument($document_id)
+    {
+        $document = Document::find($document_id);
+    
+    
+            // Décrémenter le nombre de copies disponibles
+            $document->nombre_de_copies--;
+            $document->save();
+    
+            // Afficher un message de succès
+            return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');
+        
     }
 
     /**
@@ -119,9 +136,14 @@ class ReservationController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $reservation = Réservation::findorfail($id);
-        $reservation->delete();
-        return redirect()->route('reservation.index');
-    }
+{
+    $reservation = Réservation::findorfail($id);
+    $document_id = $reservation->document_id; // retrieve the document ID from the reservation
+    $reservation->delete();
+
+    $document = Document::find($document_id);
+    $document->nombre_de_copies++;
+    $document->save();
+    return redirect()->route('reservation.index');
+}
 }

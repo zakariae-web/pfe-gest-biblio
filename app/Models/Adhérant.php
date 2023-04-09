@@ -14,6 +14,16 @@ class Adhérant extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function emprunts()
+    {
+        return $this->hasMany(Emprunt::class);
+    }
+
     protected $fillable = [
         'user_id',
         'user_password',

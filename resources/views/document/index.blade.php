@@ -16,6 +16,11 @@
         @method('DELETE')
         <button type="submit">Delete</button>
     </form>
+    <form action="{{ route('documents.emprunter', $document->id) }}" method="POST">
+    @csrf
+    <button type="submit">Emprunter</button>
+</form>
+
     @endforeach
 </body>
 </html>
