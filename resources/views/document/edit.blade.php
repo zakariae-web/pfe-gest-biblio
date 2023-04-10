@@ -33,9 +33,9 @@
         <input type="text" name="nom_editeur" value="{{old('nom_editeur',$document->nom_editeur)}}">
         <label> auteur </label>
         <input type="text" name="auteur_principal" value="{{old('auteur_principal',$document->auteur_principal)}}">
-        <label> periodicity </label>
+        <br><label> periodicity </label>
         <input type="text" name="periodicite_parution" value="{{old('periodicite_parution',$document->periodicite_parution)}}">
-        <br><label> cote </label>
+        <label> cote </label>
         <input type="text" name="cote" value="{{old('cote',$document->cote)}}">
         <button type="submit">submit</button>
     </form>

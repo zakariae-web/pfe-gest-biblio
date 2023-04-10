@@ -33,9 +33,9 @@
         <input type="text" name="nom_editeur">
         <label> auteur </label>
         <input type="text" name="auteur_principal">
-        <label> periodicity </label>
+        <br><label> periodicity </label>
         <input type="text" name="periodicite_parution">
-        <br><label> cote </label>
+        <label> cote </label>
         <input type="text" name="cote">
         <button type="submit">submit</button>
     </form>

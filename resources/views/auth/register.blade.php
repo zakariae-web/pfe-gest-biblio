@@ -80,7 +80,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <select name="role" id="" class="col-md-6 offset-md-4">
                                 <option value="enseignant"> enseignant</option>
-                                <option value=""> etudiant</option>
+                                <option value="etudiant"> etudiant</option>
                             </select>
                         </div>
 

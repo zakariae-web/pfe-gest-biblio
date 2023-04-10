@@ -226,3 +226,19 @@
     filter: brightness(.7);
     transform: scale(.98);
    }
+
+   #imgobj{
+    object-fit:contain;
+    width: 100%;
+    max-height:max-content;
+}
+.card {
+  height: 480px;
+  overflow: hidden;
+}
+.card img{
+  transition: all 0.5s;
+}
+.card img:hover{
+  transform: scale(1.4);
+}

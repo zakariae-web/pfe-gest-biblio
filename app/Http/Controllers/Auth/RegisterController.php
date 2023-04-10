@@ -76,7 +76,7 @@ class RegisterController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
         'role' => $data['role'],
-        'card_number' => $card_number, // Ajouter le numéro de carte d'adhérent généré
+        'card_number' => $card_number,
     ]);
 
     // Créer un nouvel adhérent associé à l'utilisateur
