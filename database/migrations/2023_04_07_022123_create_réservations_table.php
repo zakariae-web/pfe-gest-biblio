@@ -19,7 +19,7 @@ return new class extends Migration
             $table->dateTime('end_date');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-            
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('document_id')->references('id')->on('documents');
         });

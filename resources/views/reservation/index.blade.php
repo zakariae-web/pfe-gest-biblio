@@ -38,7 +38,7 @@
                     <td>{{ $reservation->id }}</td>
                     <td>{{ $reservation->user->name }}</td>
                     <td>{{ $reservation->document->titre }}</td>
-                    <td>{{ $reservation->adherant ? $reservation->adherant->card_number : 'N/A' }}</td>
+                    <td>{{ $reservation->user ? $reservation->user->card_number : 'N/A' }}</td>
                     <td>{{ $reservation->start_date }}</td>
                     <td>{{ $reservation->end_date }}</td>
                     <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
