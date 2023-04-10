@@ -21,8 +21,6 @@
                         <li class="nav-item"><a class="nav-link"  href="{{('/')}}">accueil</a></li>
                         <li class="nav-item"><a class="nav-link"  href="{{('/document')}}">documents</a></li>
                         <li class="nav-item"><a class="nav-link"  href="{{('/reservation/create')}}">réservation</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="products.html">contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{('login')}}">login</a></li>
                     </ul>
                 </div>
