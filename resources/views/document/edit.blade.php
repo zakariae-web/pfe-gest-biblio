@@ -21,17 +21,22 @@
         @CSRF
         @method('PUT')
         <label> titre </label>
-        <input type="text" name="titre">
+        <input type="text" name="titre" value="{{old('titre',$document->titre)}}">
+        <label> image </label>
+        <input type="file" name="image">
         <label> le type </label>
-        <input type="text" name="type_document">
+        <select name="type_document" id="">
+            <option value="livre"> livre</option>
+            <option value="revue"> revue</option>
+        </select>
         <label> nom d'editeur </label>
-        <input type="text" name="nom_editeur">
+        <input type="text" name="nom_editeur" value="{{old('nom_editeur',$document->nom_editeur)}}">
         <label> auteur </label>
-        <input type="text" name="auteur_principal">
+        <input type="text" name="auteur_principal" value="{{old('auteur_principal',$document->auteur_principal)}}">
         <label> periodicity </label>
-        <input type="text" name="periodicite_parution">
-        <label> cote </label>
-        <input type="text" name="cote">
+        <input type="text" name="periodicite_parution" value="{{old('periodicite_parution',$document->periodicite_parution)}}">
+        <br><label> cote </label>
+        <input type="text" name="cote" value="{{old('cote',$document->cote)}}">
         <button type="submit">submit</button>
     </form>
     

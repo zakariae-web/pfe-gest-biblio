@@ -55,6 +55,12 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
+        'document' => [
+            'driver' => 'local',
+            'root' => base_path() . 'public/images/',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
 
     ],
 

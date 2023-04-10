@@ -50,23 +50,19 @@ class ReservationController extends Controller
         $user_type = $user->role;
         $max_reservations = 2;
     
-        // Vérifier le nombre de réservations actives de l'utilisateur
         $active_reservations_count = $user->reservations()->where('is_active', 1)->count();
     
-        // Déterminer la limite de réservations pour ce type d'utilisateur
         if ($user_type == 'etudiant') {
             $max_reservations = 2;
         } elseif ($user_type == 'enseignant') {
             $max_reservations = 4;
         }
     
-        // Vérifier si l'utilisateur a atteint la limite de réservations
         if ($active_reservations_count >= $max_reservations) {
             return redirect()->back()->with('error', 'Vous avez atteint la limite de réservations pour votre type d\'utilisateur.');
         }
         
 
-        // Continuer avec la création de la réservation
         $reservation = new Réservation();
     
         $reservation->user_id = $request->input('user_id');
@@ -74,7 +70,7 @@ class ReservationController extends Controller
         $reservation->start_date = $request->input('start_date');
         $reservation->end_date = $request->input('end_date');
         $reservation->is_active = true;
-    $this->reserverDocument($reservation->document_id);
+        $this->reserverDocument($reservation->document_id);
 
         $reservation->save();
         
@@ -86,14 +82,10 @@ class ReservationController extends Controller
     {
         $document = Document::find($document_id);
     
+        $document->nombre_de_copies--;
+        $document->save();
     
-            // Décrémenter le nombre de copies disponibles
-            $document->nombre_de_copies--;
-            $document->save();
-    
-            // Afficher un message de succès
-            return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');
-        
+        return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');    
     }
 
     /**

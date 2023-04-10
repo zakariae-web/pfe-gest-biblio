@@ -18,10 +18,12 @@
 @section('content')
 
     <h1>ajouter un livre</h1>
-    <form action="{{route('document.store')}}" method="POST">
+    <form action="{{route('document.store')}}" method="POST" enctype="multipart/form-data">
         @CSRF
         <label> titre </label>
         <input type="text" name="titre">
+        <label> image </label>
+        <input type="file" name="image">
         <label> le type </label>
         <select name="type_document" id="">
             <option value="livre"> livre</option>
@@ -33,7 +35,7 @@
         <input type="text" name="auteur_principal">
         <label> periodicity </label>
         <input type="text" name="periodicite_parution">
-        <label> cote </label>
+        <br><label> cote </label>
         <input type="text" name="cote">
         <button type="submit">submit</button>
     </form>

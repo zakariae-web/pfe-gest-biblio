@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +18,7 @@ class DocumentController extends Controller
     {
         $documentsQuery = Document::query();
     
-        // filter the document by category
+        // filter the document by type
         if ($request->has('type_document')) {
             $type_document = $request->type_document;
             if ($type_document !== 'all') {
@@ -57,30 +56,27 @@ class DocumentController extends Controller
     {
 
         $this->authorize('manage-documents');
-        // Créer un nouveau document
+
+        $file_extension = $request -> image -> getClientOriginalExtension();
+        $file_name = time().'.'.$file_extension;
+        $path = 'images';
+        $request -> image -> move($path,$file_name);
+
         $document = new Document();
 
         $document->titre = $request->input('titre');
+        $document['image']= $file_name;
         $document->type_document = $request->input('type_document');
         $document->nom_editeur = $request->input('nom_editeur');
         $document->auteur_principal = $request->input('auteur_principal');
         $document->periodicite_parution = $request->input('periodicite_parution');
         $document->cote = $request->input('cote');
     
-        // Enregistrer le nouveau document dans la base de données
         $document->save();
     
-        // Appeler la fonction pour réserver le document
-        // $this->reserverDocument($document->id);
-    
-        // Rediriger l'utilisateur
         return redirect()->route('document.index');
     }
     
-    
-
-
-
     /**
      * Display the specified resource.
      */
