@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('card_number')->unique();
-            $table->string('adress');
+            $table->string('adress')->nullable();
             $table->string('nombre_livres_empruntes');
-            $table->string('departement');
+            $table->string('departement')->nullable();
             $table->date('date_registered');
             $table->date('date_expiration');
             $table->boolean('is_active')->default(true);

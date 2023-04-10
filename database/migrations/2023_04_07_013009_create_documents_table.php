@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('titre');
             $table->string('image');
             $table->string('type_document');
-            $table->string('nom_editeur');
-            $table->string('auteur_principal');
-            $table->string('periodicite_parution');
-            $table->string('cote');
+            $table->string('nom_editeur')->nullable();
+            $table->string('auteur_principal')->nullable();
+            $table->string('periodicite_parution')->nullable();
+            $table->string('cote')->nullable();
             $table->integer('nombre_de_copies')->default(10);
             $table->timestamps();
         });

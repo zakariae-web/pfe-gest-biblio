@@ -80,7 +80,7 @@ class RegisterController extends Controller
     ]);
 
     // Créer un nouvel adhérent associé à l'utilisateur
-    $user->adherent()->create([
+    $user->adherant()->create([
         'card_number' => $card_number,
         'adress' => '',
         'nombre_livres_empruntes' => 0,

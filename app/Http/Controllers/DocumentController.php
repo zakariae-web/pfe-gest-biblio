@@ -62,7 +62,7 @@ class DocumentController extends Controller
         $path = 'images';
         $request -> image -> move($path,$file_name);
 
-        $document = new Document();
+     $document = new Document();
 
         $document->titre = $request->input('titre');
         $document['image']= $file_name;
@@ -72,7 +72,7 @@ class DocumentController extends Controller
         $document->periodicite_parution = $request->input('periodicite_parution');
         $document->cote = $request->input('cote');
     
-        $document->save();
+        $document->save();   
     
         return redirect()->route('document.index');
     }

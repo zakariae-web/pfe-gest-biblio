@@ -7,6 +7,7 @@ use App\Models\Réservation;
 use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Adhérant;
 
 class ReservationController extends Controller
 {
