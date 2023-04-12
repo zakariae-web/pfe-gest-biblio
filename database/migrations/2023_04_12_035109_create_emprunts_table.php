@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('réservations', function (Blueprint $table) {
+        Schema::create('emprunts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('document_id');
-            $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('reservation_id');
+            $table->dateTime('date_emprunt');
+            $table->dateTime('date_retour')->nullable();
             $table->timestamps();
-
+        
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('reservation_id')->references('id')->on('réservation');
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('réservations');
+        Schema::dropIfExists('emprunts');
     }
 };

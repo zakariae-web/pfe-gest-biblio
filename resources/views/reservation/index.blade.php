@@ -26,8 +26,6 @@
                 <th>Utilisateur</th>
                 <th>Document</th>
                 <th> carte de lecture</th>
-                <th>Date de début</th>
-                <th>Date de fin</th>
                 <th>Statut</th>
                 <th>Actions</th>
             </tr>
@@ -38,9 +36,7 @@
                     <td>{{ $reservation->id }}</td>
                     <td>{{ $reservation->user->name }}</td>
                     <td>{{ $reservation->document->titre }}</td>
-                    <td>{{ $reservation->user ? $reservation->user->card_number : 'N/A' }}</td>
-                    <td>{{ $reservation->start_date }}</td>
-                    <td>{{ $reservation->end_date }}</td>
+                    <td>{{ $reservation->user->card_number}}</td>
                     <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
                     <td>
                         <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST" style="display: inline;">
