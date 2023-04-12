@@ -17,38 +17,47 @@
 @endsection
 @section('content')
 
-    <h1>Liste des réservations</h1>
+<h1>Liste des réservations</h1>
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Utilisateur</th>
+            <th>Document</th>
+            <th>Carte de lecture</th>
+            <th>Statut</th>
+            <th>Actions</th>
+            <th>Validation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($reservation as $reservation)
             <tr>
-                <th>ID</th>
-                <th>Utilisateur</th>
-                <th>Document</th>
-                <th> carte de lecture</th>
-                <th>Statut</th>
-                <th>Actions</th>
+                <td>{{ $reservation->id }}</td>
+                <td>{{ $reservation->user->name }}</td>
+                <td>{{ $reservation->document->titre }}</td>
+                <td>{{ $reservation->user->card_number}}</td>
+                <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
+                <td>
+                    <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+                <td>
+                <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-success">Valider l'emprunt</button>
+                </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($reservation as $reservation)
-                <tr>
-                    <td>{{ $reservation->id }}</td>
-                    <td>{{ $reservation->user->name }}</td>
-                    <td>{{ $reservation->document->titre }}</td>
-                    <td>{{ $reservation->user->card_number}}</td>
-                    <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
-                    <td>
-                        <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
+        @endforeach
+    </tbody>
+</table>
+<a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
+
 
 @endsection

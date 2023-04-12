@@ -37,13 +37,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-    
-        // Vérifier si la date de fin est supérieure à la date de début
-        if ($end_date <= $start_date) {
-            return redirect()->back()->with('error', 'La date de fin doit être supérieure à la date de début.');
-        }
+        
         $user_id = Auth::id();
         $user = User::find($user_id);
     
@@ -68,8 +62,6 @@ class ReservationController extends Controller
     
         $reservation->user_id = $request->input('user_id');
         $reservation->document_id = $request->input('document_id');
-        $reservation->start_date = $request->input('start_date');
-        $reservation->end_date = $request->input('end_date');
         $reservation->is_active = true;
         $this->reserverDocument($reservation->document_id);
 

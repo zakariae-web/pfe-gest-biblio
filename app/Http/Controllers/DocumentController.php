@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use App\Models\Réservation;
 use App\Models\Adhérant;
+use App\Models\Emprunt;
+use Carbon\Carbon;
+
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,7 +21,7 @@ class DocumentController extends Controller
     public function index(Request $request)
     {
         $documentsQuery = Document::query();
-    
+
         // filter the document by type
         if ($request->has('type_document')) {
             $type_document = $request->type_document;
@@ -76,6 +80,32 @@ class DocumentController extends Controller
     
         return redirect()->route('document.index');
     }
+
+    public function validerEmprunt($document_id)
+    {
+        // Vérifier que le document existe
+        $document = Document::findOrFail($document_id);
+    
+        // Vérifier que la réservation correspond bien au document
+        $reservation = Réservation::where('document_id', $document->id)
+            ->where('is_active', true)
+            ->first();
+    
+
+        // Créer un nouvel enregistrement dans la table `emprunts`
+        $emprunt = new Emprunt;
+        $emprunt->user_id = Auth::user()->id;
+        $emprunt->document_id = $document->id;
+        $emprunt->reservation_id = $reservation->id;
+        $emprunt->date_emprunt = Carbon::now();
+        $emprunt->date_retour = Carbon::now()->addDays(7); // par exemple, définir la date limite de retour à 7 jours après la date d'emprunt
+        $emprunt->save();
+    
+        $reservation->delete();
+    
+        return back()->with('success', 'Emprunt validé avec succès.');
+    }
+    
     
     /**
      * Display the specified resource.

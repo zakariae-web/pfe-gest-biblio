@@ -9,11 +9,8 @@ class Document extends Model
 {
     use HasFactory;
 
-    public function emprunter()
-    {
-        $this->nombre_de_copies--;
-        $this->save();
-    }
+
+    
 
     public function retourner()
     {

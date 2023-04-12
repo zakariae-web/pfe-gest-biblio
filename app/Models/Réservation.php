@@ -23,4 +23,9 @@ class Réservation extends Model
     {
         return $this->belongsTo(Adhérant::class);
     }
+
+    public function emprunt()
+    {
+        return $this->hasOne(Emprunt::class);
+    }
 }

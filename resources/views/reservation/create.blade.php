@@ -33,18 +33,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="start_date" class="col-sm-2 col-form-label">start date</label>
-                    <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" name="start_date" id="start_date"  required="">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="end_date" class="col-sm-2 col-form-label">end date</label>
-                    <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" name="end_date" id="end_date"  required="">
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
                 @if (session('error'))
                     <div class="alert alert-danger">
