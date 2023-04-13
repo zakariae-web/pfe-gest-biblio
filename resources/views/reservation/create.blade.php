@@ -7,7 +7,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>ENSR Rabat</title>
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -33,12 +34,17 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
                 @if (session('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
                     </div>
                 @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
             </form>
         </div>
     </header>

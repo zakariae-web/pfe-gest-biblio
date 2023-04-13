@@ -76,8 +76,8 @@ class ReservationController extends Controller
     
 
     
-        return redirect()->route('reservation.index');
-    }
+        return redirect()->route('reservation.create')->with('success', 'La réservation a été effectuée avec succès.');
+        }
 
     public function reserverDocument($document_id)
     {
@@ -102,11 +102,7 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
-        $this->authorize('manage-documents');
-        $reservation = Réservation::findorfail($id);
-        return view('reservation.edit', [
-            'reservation' => $reservation
-        ]);
+        //
     }
 
     /**
@@ -114,19 +110,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->authorize('manage-documents');
-        $reservation = Réservation::findorfail($id);
-
-        
-        $reservation->user_id = $request->input('user_id');
-        $reservation->document_id = $request->input('document_id');
-        $reservation->start_date = $request->input('start_date');
-        $reservation->end_date = $request->input('end_date');
-        $reservation->is_active = true;
-
-        $reservation->save();
-        
-        return redirect()->route('reservation.index');
+        //
     }
 
     /**

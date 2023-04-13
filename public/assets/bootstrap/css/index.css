@@ -1,8 +1,17 @@
-#mainNav{
+/*#mainNav{
     background-color:rgba(240, 248, 255, 0);
 }
+*/
 
+#mainNav img{
+    width: 130px;
+    height: 130px;
+}
 
+#mainNav{
+    height: 80px;
+    background-color:rgba(240, 248, 255, 0);
+}
 html::-webkit-scrollbar {
     width: 1rem;
 }
