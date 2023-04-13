@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Adhérant;
 use App\Jobs\DeleteReservation;
+use Illuminate\Support\Str;
+
 
 
 
@@ -18,7 +20,7 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()->role == 'admin') {
             $reservations = Réservation::all();
@@ -26,11 +28,15 @@ class ReservationController extends Controller
             $reservations = Auth::user()->reservations;
         }
         
+        $search = $request->input('search');
+        
+        if (!empty($search)) {
+            $users = User::where('name', 'LIKE', '%'.$search.'%')->get();
+            $reservations = $reservations->whereIn('user_id', $users->pluck('id'));
+        }
+        
         return view('reservation.index', compact('reservations'));
-    }
-    
-    
-
+    }    
     /**
      * Show the form for creating a new resource.
      */

@@ -160,13 +160,13 @@ class DocumentController extends Controller
         return redirect()->route('document.index');
     }
     public function emprunterLivre(Request $request, $id)
-{
-    $this->authorize('manage-documents');
-    $document = Document::find($id);
+    {
+        $this->authorize('manage-documents');
+        $document = Document::find($id);
 
-    if (!$document) {
-        return back()->withError('Livre non trouvé.');
-    }
+        if (!$document) {
+            return back()->withError('Livre non trouvé.');
+        }
 
     $adherent = Auth::user()->adherent;
 

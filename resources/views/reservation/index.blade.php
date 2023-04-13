@@ -19,7 +19,16 @@
 @section('content')
 
 <h1>Liste des réservations</h1>
-
+@if(Auth()->check() && Auth()->user()->role == 'admin')
+<form method="GET" action="{{ route('reservation.index') }}">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recherche par nom d'utilisateur" name="search">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </div>
+    </div>
+</form>
+@endif
 <table class="table">
     <thead>
         <tr>
