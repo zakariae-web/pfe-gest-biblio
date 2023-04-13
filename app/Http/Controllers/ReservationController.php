@@ -36,7 +36,6 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $this->authorize('manage-documents');
         $documents = Document::all();
         return view('reservation.create', compact('documents'));
     }
@@ -77,7 +76,7 @@ class ReservationController extends Controller
     
 
     
-        return redirect()->route('reservation.create');
+        return redirect()->route('reservation.index');
     }
 
     public function reserverDocument($document_id)

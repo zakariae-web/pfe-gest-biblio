@@ -62,9 +62,8 @@
         @endif
     </tbody>
 </table>
-@if(Auth()->check() && Auth()->user()->role == 'admin')
 <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
-@endif
+
 
 
 @endsection
