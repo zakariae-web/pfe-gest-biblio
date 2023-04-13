@@ -80,7 +80,6 @@ class DocumentController extends Controller
     
         return redirect()->route('document.index');
     }
-
     public function validerEmprunt($document_id)
     {
         // Vérifier que le document existe
@@ -91,10 +90,13 @@ class DocumentController extends Controller
             ->where('is_active', true)
             ->first();
     
-
+        if ($reservation->user->emprunts()->count() >= 5) {
+            return back()->withErrors(['error' => 'Ce utilisateur a atteint le nombre maximum d\'emprunts.']);
+        }
+    
         // Créer un nouvel enregistrement dans la table `emprunts`
         $emprunt = new Emprunt;
-        $emprunt->user_id = Auth::user()->id;
+        $emprunt->user_id = $reservation->user_id;
         $emprunt->document_id = $document->id;
         $emprunt->reservation_id = $reservation->id;
         $emprunt->date_emprunt = Carbon::now();
@@ -105,6 +107,7 @@ class DocumentController extends Controller
     
         return back()->with('success', 'Emprunt validé avec succès.');
     }
+    
     
     
     /**

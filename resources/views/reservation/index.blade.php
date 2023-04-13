@@ -47,8 +47,18 @@
                 </td>
             </tr>
         @endforeach
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </tbody>
 </table>
+
 <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
 
 

@@ -70,7 +70,7 @@ class ReservationController extends Controller
     
 
     
-        return redirect()->route('reservation.index');
+        return redirect()->route('reservation.create');
     }
 
     public function reserverDocument($document_id)
