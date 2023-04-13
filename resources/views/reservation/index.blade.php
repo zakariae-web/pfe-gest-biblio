@@ -27,7 +27,6 @@
             <th>Document</th>
             <th>Carte de lecture</th>
             <th>Statut</th>
-            <th>Actions</th>
             <th>Validation</th>
         </tr>
     </thead>
@@ -39,13 +38,6 @@
                 <td>{{ $reservation->document->titre }}</td>
                 <td>{{ $reservation->user->card_number}}</td>
                 <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
-                <td>
-                    <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form>
-                </td>
                 <td>
                 <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">
                     @csrf

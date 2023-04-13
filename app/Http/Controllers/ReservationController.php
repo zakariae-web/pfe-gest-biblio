@@ -8,6 +8,9 @@ use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Adhérant;
+use App\Jobs\DeleteReservation;
+
+
 
 class ReservationController extends Controller
 {
@@ -37,7 +40,6 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        
         $user_id = Auth::id();
         $user = User::find($user_id);
     
@@ -56,19 +58,19 @@ class ReservationController extends Controller
         if ($active_reservations_count >= $max_reservations) {
             return redirect()->back()->with('error', 'Vous avez atteint la limite de réservations pour votre type d\'utilisateur.');
         }
-        
-
+    
         $reservation = new Réservation();
     
         $reservation->user_id = $request->input('user_id');
         $reservation->document_id = $request->input('document_id');
         $reservation->is_active = true;
         $this->reserverDocument($reservation->document_id);
-
+    
         $reservation->save();
-        
-       
-        return redirect()->route('document.index');
+    
+
+    
+        return redirect()->route('reservation.index');
     }
 
     public function reserverDocument($document_id)
