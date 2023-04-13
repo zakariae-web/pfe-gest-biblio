@@ -16,51 +16,15 @@ class EmpruntController extends Controller
         return view('emprunts.index', compact('emprunts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function validerRetour($emprunt_id)
     {
-        //
+        $emprunt = Emprunt::findOrFail($emprunt_id);
+    
+        $emprunt->delete();
+    
+    
+        return back()->with('success', 'Retour validé avec succès.');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
+    
 }

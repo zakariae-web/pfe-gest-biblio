@@ -30,4 +30,6 @@ Route::resource('reservation', ReservationController::class)->middleware('auth')
 Route::put('/documents/{document_id}/validerEmprunt', [DocumentController::class, 'validerEmprunt'])->name('documents.validerEmprunt');
 Route::post('/reservation/{document_id}/reserver', [ReservationController::class, 'reserverDocument']);
 Route::resource('emprunts', EmpruntController::class);
+Route::post('/emprunts/{emprunt_id}/valider-retour', [EmpruntController::class, 'validerRetour'])->name('emprunts.validerRetour');
+
 
