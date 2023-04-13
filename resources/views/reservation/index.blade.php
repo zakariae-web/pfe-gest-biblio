@@ -27,17 +27,20 @@
             <th>Document</th>
             <th>Carte de lecture</th>
             <th>Statut</th>
+            @if(Auth()->check() && Auth()->user()->role == 'admin')
             <th>Validation</th>
+            @endif
         </tr>
     </thead>
     <tbody>
-        @foreach($reservation as $reservation)
+        @foreach($reservations as $reservation)
             <tr>
                 <td>{{ $reservation->id }}</td>
                 <td>{{ $reservation->user->name }}</td>
                 <td>{{ $reservation->document->titre }}</td>
                 <td>{{ $reservation->user->card_number}}</td>
                 <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
+                @if(Auth()->check() && Auth()->user()->role == 'admin')
                 <td>
                 <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">
                     @csrf
@@ -45,6 +48,7 @@
                     <button type="submit" class="btn btn-success">Valider l'emprunt</button>
                 </form>
                 </td>
+                @endif
             </tr>
         @endforeach
         @if ($errors->any())
@@ -58,8 +62,9 @@
         @endif
     </tbody>
 </table>
-
+@if(Auth()->check() && Auth()->user()->role == 'admin')
 <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
+@endif
 
 
 @endsection

@@ -26,7 +26,9 @@
                 <th>Document</th>
                 <th>Date d'emprunt</th>
                 <th>Date de retour</th>
+                @if(Auth()->check() && Auth()->user()->role == 'admin')
                 <th>valider retour</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -37,12 +39,15 @@
                     <td>{{ $emprunt->document->titre }}</td>
                     <td>{{ $emprunt->date_emprunt }}</td>
                     <td>{{ $emprunt->date_retour }}</td>
+                    @if(Auth()->check() && Auth()->user()->role == 'admin')
                     <td>
+                        
                     <form action="{{ route('emprunts.validerRetour', ['emprunt_id' => $emprunt->id]) }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-success">Valider le retour</button>
                     </form>
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

@@ -20,16 +20,23 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $this->authorize('manage-documents');
-        return view('reservation.index',
-        ['reservation' => Réservation::all()]);
+        if (auth()->user()->role == 'admin') {
+            $reservations = Réservation::all();
+        } else {
+            $reservations = Auth::user()->reservations;
+        }
+        
+        return view('reservation.index', compact('reservations'));
     }
+    
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        $this->authorize('manage-documents');
         $documents = Document::all();
         return view('reservation.create', compact('documents'));
     }

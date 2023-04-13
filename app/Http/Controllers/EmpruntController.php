@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Emprunt;
+use Illuminate\Support\Facades\Auth;
+
 
 class EmpruntController extends Controller
 {
@@ -12,9 +14,16 @@ class EmpruntController extends Controller
      */
     public function index()
     {
-        $emprunts = Emprunt::all();
+        // Vérifier si l'utilisateur connecté est un administrateur
+        if (auth()->user()->role == 'admin') {
+            $emprunts = Emprunt::all();
+        } else {
+            $emprunts = Auth::user()->emprunts;
+        }
+        
         return view('emprunts.index', compact('emprunts'));
     }
+    
 
     public function validerRetour($emprunt_id)
     {
