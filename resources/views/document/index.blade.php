@@ -15,7 +15,6 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/bootstrap/css/documentsindex.css">
-        
     </head>
 @endsection
 @section('content')
@@ -51,17 +50,17 @@
             </div>
             @foreach($documents as $document)
                 <div class="col">
-                    <div class="card mb-3">
-                        <div class="card-body text-center">
-                            <a href="{{route('document.show', ['document' => $document->id])}}"><img src="images/{{$document['image']}}" class="mx-auto" id="imgobj"/></a>
-                            <h5>{{$document['titre']}}</h5>
-                            <p><span class="text-danger font-bold">editeur : {{$document['nom_editeur']}}</span></p>
-                            <div class="d-flex align-items-center gap-3 mt-2 justify-content-center"></div>
-                        </div>
-                            <div class="d-flex flex-column align-items-center gap-3">
-                                <h5>{{$document['auteur_principal']}}</h5>
-                            </div>
-                    </div> 
+                    <figure class="snip1253 hover">
+                        <div class="image"><img src="images/{{$document['image']}}" alt="sample66"/></div>
+                        <figcaption>
+                            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
+                            <h3>{{$document['titre']}}</h3>
+                            <p> editeur : {{$document['nom_editeur']}}</p>
+                        </figcaption>
+                        <footer>
+                            <div class="views"><i class="ion-eye"></i>{{$document['auteur_principal']}}</div>
+                        </footer><a href="{{route('document.show', ['document' => $document->id])}}"></a>
+                    </figure>
                     @if(auth()->check() && auth()->user()->role == 'admin')
                     <form method="POST" action="{{ route('document.destroy', ['document' => $document->id])}}">
                         @csrf

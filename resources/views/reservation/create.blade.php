@@ -47,6 +47,7 @@
                 @endif
                 <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
             </form>
+            <a href="{{('/reservation')}}"><button class="btn btn-dark submit-button mt-2">voir mes réservations</button></a>
         </div>
     </header>
 @endsection

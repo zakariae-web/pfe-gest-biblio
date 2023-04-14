@@ -34,7 +34,7 @@
                 <div class="text-center intro-text p-5 rounded bg-faded">
                     <h2 class="section-heading mb-4"><span class="section-heading-lower">Bienvenue sur ENSR BIBLIO</span></h2>
                     <p class="mb-3">Nous sommes heureux de vous présenter notre bibliothèque en ligne, où vous pouvez accéder à une collection de livres fascinante et gérer vos emprunts de manière simple et rapide. Commencez votre voyage de lecture dès maintenant !</p>
-                    <div class="mx-auto intro-button"><a class="btn btn-primary d-inline-block mx-auto btn-xl" role="button" href="#">Consulter le catalogue</a></div>
+                    <div class="mx-auto intro-button"><a class="btn btn-primary d-inline-block mx-auto btn-xl" role="button" href="{{('/document')}}">Consulter le catalogue</a></div>
                 </div>
             </div>
         </div>
