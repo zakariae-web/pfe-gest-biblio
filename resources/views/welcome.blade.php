@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/index.css">
 </head>
 
-<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('assets/img/bg.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body style="background:url('assets/img/bg2.jpg'); background-repeat: no-repeat; background-size: cover;">
 
     <nav class="navbar navbar-expand-lg pt-5" id="mainNav">
             <div class="container">

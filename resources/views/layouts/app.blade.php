@@ -1,6 +1,5 @@
 @yield('header')
-<body>
-    <div id="app">
+<body style="background:url('/assets/img/bg.jpg'); background-repeat: no-repeat; background-size: cover;">
     <nav class="navbar navbar-expand-lg pt-5" id="mainNav">
             <div class="container">
                 <img src="/assets/img/logo.png" width="200px"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -94,6 +93,5 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
 </body>
 </html>
