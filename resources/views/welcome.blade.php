@@ -51,9 +51,9 @@
             </div>
         </div>
     </section>
-    <footer class="text-center footer text-faded py-5">
+    <footer class="text-center footer text-faded py-4">
         <div class="container">
-            <p class="m-0 small">Copyright&nbsp;©&nbsp;Brand 2023</p>
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;cle-info 2023</p>
         </div>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

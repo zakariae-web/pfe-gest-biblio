@@ -1,8 +1,9 @@
 @yield('header')
-<body style="background:url('/assets/img/bg.jpg'); background-repeat: no-repeat; background-size: cover;">
-    <nav class="navbar navbar-expand-lg pt-5" id="mainNav">
+<!--<body style="background:url('/assets/img/bg.jpg'); background-repeat: no-repeat; background-size: cover;">-->
+    <body>  
+        <nav class="navbar navbar-expand-lg pt-5" id="mainNav">
             <div class="container">
-                <img src="/assets/img/logo.png" width="200px"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <img src="/assets/img/logo.png"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"><a class="nav-link"  href="{{('/')}}">accueil</a></li>
@@ -93,5 +94,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="text-center footer text-faded py-4">
+        <div class="container">
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;cle-info 2023</p>
+        </div>
+    </footer>
 </body>
 </html>
