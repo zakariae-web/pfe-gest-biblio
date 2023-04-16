@@ -76,7 +76,6 @@ class ReservationController extends Controller
         $reservation->user_id = $request->input('user_id');
         $reservation->document_id = $request->input('document_id');
         $reservation->is_active = true;
-        $this->reserverDocument($reservation->document_id);
     
         $reservation->save();
     
@@ -85,15 +84,7 @@ class ReservationController extends Controller
         return redirect()->route('reservation.create')->with('success', 'La réservation a été effectuée avec succès.');
         }
 
-    public function reserverDocument($document_id)
-    {
-        $document = Document::find($document_id);
-    
-        $document->nombre_de_copies--;
-        $document->save();
-    
-        return redirect()->back()->with('success', 'La réservation a été effectuée avec succès.');    
-    }
+
 
     /**
      * Display the specified resource.
@@ -123,15 +114,7 @@ class ReservationController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-{
-    $this->authorize('manage-documents');
-    $reservation = Réservation::findorfail($id);
-    $document_id = $reservation->document_id; // retrieve the document ID from the reservation
-    $reservation->delete();
-
-    $document = Document::find($document_id);
-    $document->nombre_de_copies++;
-    $document->save();
-    return redirect()->route('reservation.index');
-}
+    {
+        //
+    }
 }

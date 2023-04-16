@@ -93,6 +93,13 @@ class DocumentController extends Controller
         if ($reservation->user->emprunts()->count() >= 5) {
             return back()->withErrors(['error' => 'Ce utilisateur a atteint le nombre maximum d\'emprunts.']);
         }
+
+        if ($document->nombre_de_copies <= 0) {
+            return back()->withErrors(['error' => 'Le document est déjà emprunté par tous les utilisateurs.']);
+        }
+        
+        $document->nombre_de_copies--;
+        $document->save();
     
         // Créer un nouvel enregistrement dans la table `emprunts`
         $emprunt = new Emprunt;
@@ -100,8 +107,9 @@ class DocumentController extends Controller
         $emprunt->document_id = $document->id;
         $emprunt->reservation_id = $reservation->id;
         $emprunt->date_emprunt = Carbon::now();
-        $emprunt->date_retour = Carbon::now()->addDays(7); // par exemple, définir la date limite de retour à 7 jours après la date d'emprunt
+        $emprunt->date_retour = Carbon::now()->addDays(7);
         $emprunt->save();
+
     
         $reservation->delete();
     
@@ -159,23 +167,5 @@ class DocumentController extends Controller
         $document->delete();
         return redirect()->route('document.index');
     }
-    public function emprunterLivre(Request $request, $id)
-    {
-        $this->authorize('manage-documents');
-        $document = Document::find($id);
-
-        if (!$document) {
-            return back()->withError('Livre non trouvé.');
-        }
-
-    $adherent = Auth::user()->adherent;
-
-
-    $document->emprunter();
-    $adherent->nombre_livres_empruntes++;
-    $adherent->save();
-
-    return redirect()->route('document.index', $document->id)->withSuccess('Livre emprunté avec succès.');
-}
 
 }
