@@ -18,36 +18,36 @@
     </head>
 @endsection
 @section('content')
-    <header>
-        <div class="container">
-            <form action="{{ route('reservation.store') }}" method="POST">
-            @CSRF
-            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                <h1>formulaire de réservation</h1>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label" for="document_id">Document : </label>
-                    <div class="col-sm-10">
-                        <select class="form-select" name="document_id" id="document_id" aria-label="document_id">
-                            <option selected>Open this select menu</option>
-                            @foreach($documents as $document)
-                                <option value="{{ $document->id }}">{{ $document->titre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+<div class="create">
+    <div class="container">
+        <form action="{{ route('reservation.store') }}" method="POST">
+        @CSRF
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+            <h1>formulaire de réservation</h1>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="document_id">Document : </label>
+                <div class="col-sm-10">
+                    <select class="form-select" name="document_id" id="document_id" aria-label="document_id">
+                        <option selected>Open this select menu</option>
+                        @foreach($documents as $document)
+                            <option value="{{ $document->id }}">{{ $document->titre }}</option>
+                        @endforeach
+                    </select>
                 </div>
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
-            </form>
-            <a href="{{('/reservation')}}"><button class="btn btn-dark submit-button mt-2">voir mes réservations</button></a>
-        </div>
-    </header>
+            </div>
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <button type="submit" class="btn btn-dark submit-button">Enregistrer</button>
+        </form>
+        <a href="{{('/reservation')}}"><button class="btn btn-dark submit-button mt-2">voir mes réservations</button></a>
+    </div>
+</div>
 @endsection

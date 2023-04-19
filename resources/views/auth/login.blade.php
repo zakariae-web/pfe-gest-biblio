@@ -14,12 +14,12 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/index.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/login.css">
 
     </head>
 @endsection
 @section('content')
-<div class="container">
+<div class="container create">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

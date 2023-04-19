@@ -18,7 +18,7 @@
     </head>
 @endsection
 @section('content')
-
+<div class="create">
     <h1>ajouter un livre</h1>
     <form action="{{route('document.store')}}" method="POST" enctype="multipart/form-data">
         @CSRF
@@ -41,5 +41,5 @@
         <input type="text" name="cote">
         <button type="submit">submit</button>
     </form>
-    
+</div>  
 @endsection

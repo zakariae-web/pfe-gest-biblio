@@ -1,5 +1,5 @@
 body{
-  background: #e5c38f;
+  background: #DAF5FF;
 }
 #mainNav img{
   width: 70px;
@@ -8,12 +8,12 @@ body{
 }
 
 #mainNav .navbar-nav .nav-item .nav-link{
-  color:#FFDB89;
+  color:#f7f7f7;
 }
 
 #mainNav{
   height: 100px;
-  background-color:#4b2004;
+  background-color:#0A4D68;
 }
 
 html::-webkit-scrollbar {
@@ -21,11 +21,15 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background-color: #F9E2AF;
+  background-color: #ADE4DB;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #3b1a04;
+  background-color: #088395;
+}
+
+.footer{
+  background-color:#0A4D68;
 }
 
 
@@ -226,7 +230,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 #filter{
-  background-color: #4F200D;
+  background-color: #0A4D68;
 }
 
 .card-container {

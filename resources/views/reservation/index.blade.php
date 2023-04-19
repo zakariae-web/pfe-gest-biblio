@@ -18,63 +18,61 @@
     </head>
 @endsection
 @section('content')
-
-<h1>Liste des réservations</h1>
-@if(Auth()->check() && Auth()->user()->role == 'admin')
-<form method="GET" action="{{ route('reservation.index') }}">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recherche par nom d'utilisateur" name="search">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
-        </div>
-    </div>
-</form>
-@endif
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Utilisateur</th>
-            <th>Document</th>
-            <th>Carte de lecture</th>
-            <th>Statut</th>
-            @if(Auth()->check() && Auth()->user()->role == 'admin')
-            <th>Validation</th>
-            @endif
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($reservations as $reservation)
-            <tr>
-                <td>{{ $reservation->id }}</td>
-                <td>{{ $reservation->user->name }}</td>
-                <td>{{ $reservation->document->titre }}</td>
-                <td>{{ $reservation->user->card_number}}</td>
-                <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
-                @if(Auth()->check() && Auth()->user()->role == 'admin')
-                <td>
-                <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" class="btn btn-success">Valider l'emprunt</button>
-                </form>
-                </td>
-                @endif
-            </tr>
-        @endforeach
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+    <div class="create">
+        <h1>Liste des réservations</h1>
+        @if(Auth()->check() && Auth()->user()->role == 'admin')
+        <form method="GET" action="{{ route('reservation.index') }}">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recherche par nom d'utilisateur" name="search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+                </div>
             </div>
+        </form>
         @endif
-    </tbody>
-</table>
-<a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
-
-
-
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Utilisateur</th>
+                    <th>Document</th>
+                    <th>Carte de lecture</th>
+                    <th>Statut</th>
+                    @if(Auth()->check() && Auth()->user()->role == 'admin')
+                    <th>Validation</th>
+                    @endif
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($reservations as $reservation)
+                    <tr>
+                        <td>{{ $reservation->id }}</td>
+                        <td>{{ $reservation->user->name }}</td>
+                        <td>{{ $reservation->document->titre }}</td>
+                        <td>{{ $reservation->user->card_number}}</td>
+                        <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
+                        @if(Auth()->check() && Auth()->user()->role == 'admin')
+                        <td>
+                        <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-success">Valider l'emprunt</button>
+                        </form>
+                        </td>
+                        @endif
+                    </tr>
+                @endforeach
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </tbody>
+        </table>
+        <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
+    </div>
 @endsection

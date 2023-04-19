@@ -14,12 +14,12 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/bootstrap/css/reservationcreate.css">
+        <link rel="stylesheet" href="/assets/bootstrap/css/emprunts.css">
     </head>
 @endsection
 @section('content')
+<div class="create">
     <h1>Liste des emprunts</h1>
-
     <table class="table">
         <thead>
             <tr>
@@ -54,4 +54,5 @@
             @endforeach
         </tbody>
     </table>
+</div>
 @endsection
