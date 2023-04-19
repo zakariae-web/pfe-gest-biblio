@@ -36,8 +36,10 @@ class DocumentController extends Controller
             $documentsQuery->where('titre', 'LIKE', '%' . $titre . '%');
         }
     
-        $documents = $documentsQuery->get();
-    
+        $documents = $documentsQuery->simplePaginate(9);
+
+
+
         return view('document.index', [
             'documents' => $documents
         ]);

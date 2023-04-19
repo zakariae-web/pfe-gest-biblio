@@ -66,6 +66,7 @@
             </div>
         @endforeach
     </div>
+    {{ $documents->links() }}
 </div>
 
 @endsection

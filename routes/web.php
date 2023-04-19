@@ -21,9 +21,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('document', DocumentController::class);
 Route::resource('copie', CopyController::class);
 Route::resource('reservation', ReservationController::class)->middleware('auth');
