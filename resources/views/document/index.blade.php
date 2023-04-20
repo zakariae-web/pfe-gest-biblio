@@ -35,14 +35,6 @@
         </div>
     </form>
 </div>
-@if(Auth()->check() && Auth()->user()->role == 'admin')
-    <a href="{{route('document.create')}}">
-        <button class="cssbuttons-io-button mt-2 mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
-            <span>ajouter</span>
-        </button>
-    </a>
-@endif
 <div class="container">
     <div class="card-container">
         @foreach($documents as $document)
@@ -54,7 +46,10 @@
                     <h2>{{$document['titre']}}</h2>
                     <p>{{$document['nom_editeur']}}</p>
                     <p>{{$document['auteur_principal']}}</p>
-                    @if(auth()->check() && auth()->user()->role == 'admin')
+                </div>
+            </div>
+            <div class="col">
+            @if(auth()->check() && auth()->user()->role == 'admin')
                         <form method="POST" action="{{ route('document.destroy', ['document' => $document->id])}}">
                             @csrf
                             @method('DELETE')
@@ -62,10 +57,17 @@
                         </form>
                         <a href="{{route('document.edit', ['document' => $document->id])}}"><button class="mt-2 mb-2" id="btn"> modifier </button></a>
                     @endif
-                </div>
-            </div>
+                    </div>
         @endforeach
     </div>
+    @if(Auth()->check() && Auth()->user()->role == 'admin')
+    <a href="{{route('document.create')}}">
+        <button class="cssbuttons-io-button mt-2 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+            <span>ajouter</span>
+        </button>
+    </a>
+    @endif
     {{ $documents->links() }}
 </div>
 

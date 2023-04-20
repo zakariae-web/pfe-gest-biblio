@@ -23,7 +23,7 @@
         @if(Auth()->check() && Auth()->user()->role == 'admin')
         <form method="GET" action="{{ route('reservation.index') }}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recherche par nom d'utilisateur" name="search">
+                <input type="text" class="form-control" placeholder="Recherche par carte de lecture" name="search">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
                 </div>
@@ -37,7 +37,6 @@
                     <th>Utilisateur</th>
                     <th>Document</th>
                     <th>Carte de lecture</th>
-                    <th>Statut</th>
                     @if(Auth()->check() && Auth()->user()->role == 'admin')
                     <th>Validation</th>
                     @endif
@@ -50,7 +49,6 @@
                         <td>{{ $reservation->user->name }}</td>
                         <td>{{ $reservation->document->titre }}</td>
                         <td>{{ $reservation->user->card_number}}</td>
-                        <td>{{ $reservation->is_active ? 'Active' : 'Inactive' }}</td>
                         @if(Auth()->check() && Auth()->user()->role == 'admin')
                         <td>
                         <form action="{{ route('documents.validerEmprunt', $reservation->document->id) }}" method="POST" style="display: inline;">

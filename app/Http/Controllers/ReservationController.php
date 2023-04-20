@@ -31,7 +31,7 @@ class ReservationController extends Controller
         $search = $request->input('search');
         
         if (!empty($search)) {
-            $users = User::where('name', 'LIKE', '%'.$search.'%')->get();
+            $users = User::where('card_number', 'LIKE', '%'.$search.'%')->get();
             $reservations = $reservations->whereIn('user_id', $users->pluck('id'));
         }
         
@@ -75,8 +75,6 @@ class ReservationController extends Controller
     
         $reservation->user_id = $request->input('user_id');
         $reservation->document_id = $request->input('document_id');
-        $reservation->is_active = true;
-    
         $reservation->save();
     
 
