@@ -79,7 +79,7 @@ class ReservationController extends Controller
     
 
     
-        return redirect()->route('reservation.create')->with('success', 'La réservation a été effectuée avec succès.');
+        return redirect()->route('reservation.index')->with('success', 'La réservation a été effectuée avec succès.');
         }
 
 

@@ -125,7 +125,8 @@ class DocumentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $document = Document::findorfail($id);
+        return view('document.show',compact('document'));
     }
 
     /**

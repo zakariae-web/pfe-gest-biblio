@@ -71,6 +71,16 @@
                 @endif
             </tbody>
         </table>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <a href="{{route('reservation.create')}}"><h1>ajouter une reservation </h1></a>
     </div>
 @endsection

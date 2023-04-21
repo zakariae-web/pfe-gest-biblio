@@ -7,7 +7,6 @@
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"><a class="nav-link"  href="{{('/')}}">accueil</a></li>
                         <li class="nav-item"><a class="nav-link"  href="{{('/document')}}">documents</a></li>
-                        <li class="nav-item"><a class="nav-link"  href="{{('/reservation/create')}}">réservation</a></li>
                         <ul class="navbar-nav ms-auto">
                         @guest
                             @if (Route::has('login'))

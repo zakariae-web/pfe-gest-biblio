@@ -40,7 +40,7 @@
         @foreach($documents as $document)
             <div class="book-card">
                 <div class="book-card-image">
-                    <img src="images/{{$document['image']}}" alt="Book cover image">
+                <a href="{{route('document.show', ['document' => $document->id])}}"><img src="images/{{$document['image']}}" alt="Book cover image"></a>
                 </div>
                 <div class="book-card-info">
                     <h2>{{$document['titre']}}</h2>
