@@ -8,7 +8,8 @@ use App\Models\Réservation;
 use App\Models\Adhérant;
 use App\Models\Emprunt;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ThankYouForBorrowing;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -111,7 +112,12 @@ class DocumentController extends Controller
         $emprunt->date_emprunt = Carbon::now();
         $emprunt->date_retour = Carbon::now()->addDays(7);
         $emprunt->save();
-
+        
+        $userEmail = $emprunt->user->email;
+        $userName = $emprunt->user->name;
+        $bookName = $document->titre;
+        
+        Mail::to($userEmail)->send(new ThankYouForBorrowing($userName, $bookName));
     
         $reservation->delete();
     
