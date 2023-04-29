@@ -1,6 +1,4 @@
-html {
-    height: 100vh;
-}
+
 #mainNav img{
     width: 70px;
     height: 70px;
@@ -11,6 +9,9 @@ html {
     height: 80px;
     background-color:rgba(240, 248, 255, 0);
 }
+#mainNav .navbar-nav .nav-item .nav-link{
+    color:#f7f7f7;
+  }
 
 html::-webkit-scrollbar {
     width: 1rem;
@@ -25,8 +26,14 @@ html::-webkit-scrollbar-thumb {
 }
 
 .intro img{
-    height: 600px;
+    height: 550px;
     object-fit: cover;
+}
+@media (min-width: 992px){
+.intro .intro-img {
+    width: 65%;
+    float: right;
+}
 }
 
 .intro h2{
@@ -37,4 +44,119 @@ html::-webkit-scrollbar-thumb {
 .cta h2{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: oblique;
+    overflow: hidden;
 }
+
+.cta {
+    background: linear-gradient(to right,#ee7220, #69250d);
+}
+body{
+    background: linear-gradient(to right,#ee7220, #69250d);
+}
+.login-link {
+    background-color: white;
+    border-radius: 10%;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+  }
+ #mainNav #login-item a{
+    color:#000000;
+  }
+  img{
+    object-fit: contain;
+  } 
+
+.contact h2{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Rockwell;
+    padding-bottom: 20px;
+}
+
+.contact li{
+    color:rgb(255, 255, 255);
+}
+
+.contact p{
+    color:rgb(255, 255, 255);
+}
+
+.map h2{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Rockwell;
+    padding-bottom: 20px;
+}
+
+.map p{
+    color:rgb(255, 255, 255);
+}
+@media screen and (max-width: 768px) {
+    iframe{
+        width: 330px;
+    }
+    .contact img{
+        width:330px;
+    }
+
+    .map p{
+        color:rgb(255, 255, 255);
+        text-align: center;
+    }
+}
+
+
+
+  .gallery {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .slider {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .slide {
+    float: left;
+    width: 100%;
+    height: 500px;
+    position: relative;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .thumbnails {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .thumbnail {
+    margin: 0 10px;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .active-thumbnail {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  

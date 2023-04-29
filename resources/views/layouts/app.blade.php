@@ -10,8 +10,8 @@
                         <ul class="navbar-nav ms-auto">
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li class="nav-item" id="login-item">
+                                    <a class="nav-link login-link" href="{{ route('login') }}">{{ __('Se Connecter') }}</a>
                                 </li>
                             @endif
                         @else

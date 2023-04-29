@@ -1,5 +1,5 @@
 body{
-  background: #DAF5FF;
+  background: linear-gradient(to right,#d6661b, #69250d);
 }
 #mainNav img{
   width: 70px;
@@ -10,12 +10,10 @@ body{
 #mainNav .navbar-nav .nav-item .nav-link{
   color:#f7f7f7;
 }
-
 #mainNav{
-  height: 100px;
-  background-color:#0A4D68;
+  height: 80px;
+  background-color:rgba(240, 248, 255, 0);
 }
-
 html::-webkit-scrollbar {
   width: 1rem;
 }
@@ -25,13 +23,24 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #088395;
+  background-color: #c05b17;
 }
 
 .footer{
-  background-color:#0A4D68;
+  background-color:#69250d;
 }
 
+
+.login-link {
+  background-color: white;
+  border-radius: 10%;
+  height: 40px;
+  width: 150px;
+  text-align: center;
+}
+#mainNav #login-item a{
+  color:#000000;
+}
 
 
 
@@ -230,7 +239,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 #filter{
-  background-color: #0A4D68;
+  background-color: #69250d;
 }
 
 .card-container {
@@ -244,6 +253,7 @@ html::-webkit-scrollbar-thumb {
   content: "";
   flex: auto;
 }
+
 
 /************** resolution de telephone ************/
 @media (max-width: 767px) {

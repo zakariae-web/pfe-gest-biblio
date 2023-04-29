@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             Réservation::where('created_at', '<=', now()->subDays(2))
             ->delete(); 
-        })->daily();
+        })->everyMinute();
     }
     
 
