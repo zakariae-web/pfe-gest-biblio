@@ -7,6 +7,8 @@ use App\Models\Emprunt;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Document;
 use App\Models\Réservation;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ThankYouForReturning;
 
 class EmpruntController extends Controller
 {
@@ -35,6 +37,13 @@ class EmpruntController extends Controller
         $emprunt->delete();
     
         $document->save();
+
+        $userEmail = $emprunt->user->email;
+        $userName = $emprunt->user->name;
+        $bookName = $document->titre;
+        
+        Mail::to($userEmail)->send(new ThankYouForReturning($userName, $bookName));
+    
     
         return back()->with('success', 'Retour validé avec succès.');
     }
