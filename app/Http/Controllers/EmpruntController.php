@@ -9,6 +9,10 @@ use App\Models\Document;
 use App\Models\Réservation;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ThankYouForReturning;
+use App\Mail\ReminderEmail;
+use Carbon\Carbon;
+use App\Models\User;
+
 
 class EmpruntController extends Controller
 {
@@ -47,6 +51,39 @@ class EmpruntController extends Controller
     
         return back()->with('success', 'Retour validé avec succès.');
     }
+
+    public function sendReminderEmails()
+{
+    $emprunts = Emprunt::where('date_retour', '>=', Carbon::now()->subDays(1))
+                    ->where('date_retour', '<=', Carbon::now()->addDays(1))
+                    ->get();
+
+    $users = [];
+
+    foreach ($emprunts as $emprunt) {
+        $user = $emprunt->user;
+        if (!in_array($user, $users)) {
+            $users[] = $user;
+        }
+    }
+
+    return view('admin.reminder-emails')->with('users', $users);
+}
+
+public function sendEmails(Request $request)
+{
     
-    
+    $userIds = $request->input('users');
+    $users = User::whereIn('id', $userIds)->get();
+
+    foreach ($users as $user) {
+        $userName = $user->name;
+        
+        Mail::to($user->email)->send(new ReminderEmail($userName));
+    }
+
+    return redirect()->back()->with('success', 'Reminder emails sent successfully!');
+}
+
+
 }

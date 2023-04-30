@@ -30,6 +30,8 @@ Route::resource('emprunts', EmpruntController::class);
 Route::post('/emprunts/{emprunt_id}/valider-retour', [EmpruntController::class, 'validerRetour'])->name('emprunts.validerRetour');
 Route::get('/emprunts/thank-you/{emprunt_id}', 'EmpruntController@sendThankYouEmail')->name('emails.thank_you_for_borrowing');
 Route::get('/emprunts/return/thank-you/{emprunt_id}', 'EmpruntController@sendThankYouForReturningEmail')->name('emails.thank_you_for_returning');
+Route::get('/admin/reminder-emails', [EmpruntController::class, 'sendReminderEmails'])->name('admin.reminder-emails');
+Route::post('/admin/send-emails', [EmpruntController::class, 'sendEmails'])->name('admin.send-emails');
 
 
 
