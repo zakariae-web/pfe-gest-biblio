@@ -15,6 +15,7 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/bootstrap/css/login.css">
+        <link rel="stylesheet" href="/assets/bootstrap/css/layout.css">
     </head>
 @endsection
 @section('content')
@@ -45,8 +46,8 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-8 offset-md-4 cssbuttons-io-button">
+                                <button type="submit">
                                     {{ __('Confirm Password') }}
                                 </button>
 

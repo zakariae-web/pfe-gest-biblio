@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ThankYouForBorrowing;
 
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,11 +24,11 @@ class DocumentController extends Controller
     {
         $documentsQuery = Document::query();
 
-        // filter the document by type
-        if ($request->has('type_document')) {
-            $type_document = $request->type_document;
-            if ($type_document !== 'all') {
-                $documentsQuery->where('type_document', $type_document);
+
+        if ($request->has('cote')) {
+            $cote = $request->cote;
+            if ($cote !== 'all') {
+                $documentsQuery->where('cote', $cote);
             }
         }
     
@@ -37,7 +38,7 @@ class DocumentController extends Controller
             $documentsQuery->where('titre', 'LIKE', '%' . $titre . '%');
         }
     
-        $documents = $documentsQuery->simplePaginate(9);
+        $documents = $documentsQuery->Paginate(8);
 
 
 
@@ -112,12 +113,13 @@ class DocumentController extends Controller
         $emprunt->date_emprunt = Carbon::now();
         $emprunt->date_retour = Carbon::now()->addDays(7);
         $emprunt->save();
-        
+
         $userEmail = $emprunt->user->email;
         $userName = $emprunt->user->name;
         $bookName = $document->titre;
-        
+
         Mail::to($userEmail)->send(new ThankYouForBorrowing($userName, $bookName));
+
     
         $reservation->delete();
     

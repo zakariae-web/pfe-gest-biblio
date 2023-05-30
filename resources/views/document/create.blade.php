@@ -14,31 +14,37 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/bootstrap/css/layout.css">
         <link rel="stylesheet" href="/assets/bootstrap/css/documentscreate.css">
     </head>
 @endsection
 @section('content')
-<div class="create">
+<div class="container create " style="margin-top: 150px;">
     <h1>ajouter un livre</h1>
     <form action="{{route('document.store')}}" method="POST" enctype="multipart/form-data">
         @CSRF
-        <label> titre </label>
+        <label> Titre </label>
         <input type="text" name="titre">
-        <label> image </label>
-        <input type="file" name="image">
-        <label> le type </label>
+        <label> Image </label>
+        <input type="file" name="image" class="form-control">
+        <label> Type </label>
         <select name="type_document" id="">
-            <option value="livre"> livre</option>
-            <option value="revue"> revue</option>
+            <option value="livre"> Livre</option>
+            <option value="revue"> Revue</option>
         </select>
-        <label> nom d'editeur </label>
+        <label> Nom d'editeur </label>
         <input type="text" name="nom_editeur">
-        <label> auteur </label>
+        <label> Auteur </label>
         <input type="text" name="auteur_principal">
-        <br><label> periodicity </label>
-        <input type="text" name="periodicite_parution">
-        <label> cote </label>
-        <input type="text" name="cote">
+        <label> thématique </label>
+        <select name="cote" id="">
+            <option value="science"> science</option>
+            <option value="mathematique"> mathematique</option>
+            <option value="informatique"> informatique</option>
+            <option value="l'histoire"> l'histoire</option>
+            <option value="dictionnaire"> dictionnaire</option>
+            <option value="autre"> autre</option>
+        </select>
         <button type="submit">submit</button>
     </form>
 </div>  

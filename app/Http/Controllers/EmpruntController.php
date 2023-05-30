@@ -13,7 +13,6 @@ use App\Mail\ReminderEmail;
 use Carbon\Carbon;
 use App\Models\User;
 
-
 class EmpruntController extends Controller
 {
     /**
@@ -21,6 +20,7 @@ class EmpruntController extends Controller
      */
     public function index()
     {
+        $this->authorize('manage-documents');
         if (auth()->user()->role == 'admin') {
             $emprunts = Emprunt::all();
         } else {
@@ -45,45 +45,50 @@ class EmpruntController extends Controller
         $userEmail = $emprunt->user->email;
         $userName = $emprunt->user->name;
         $bookName = $document->titre;
-        
+
         Mail::to($userEmail)->send(new ThankYouForReturning($userName, $bookName));
-    
     
         return back()->with('success', 'Retour validé avec succès.');
     }
-
-    public function sendReminderEmails()
-{
-    $emprunts = Emprunt::where('date_retour', '>=', Carbon::now()->subDays(1))
-                    ->where('date_retour', '<=', Carbon::now()->addDays(1))
-                    ->get();
-
-    $users = [];
-
-    foreach ($emprunts as $emprunt) {
-        $user = $emprunt->user;
-        if (!in_array($user, $users)) {
-            $users[] = $user;
-        }
-    }
-
-    return view('admin.reminder-emails')->with('users', $users);
-}
-
-public function sendEmails(Request $request)
-{
     
-    $userIds = $request->input('users');
-    $users = User::whereIn('id', $userIds)->get();
-
-    foreach ($users as $user) {
-        $userName = $user->name;
+    public function sendReminderEmails()
+    {
+         $this->authorize('manage-documents');
+        $futureEmprunts = Emprunt::where('date_retour', '>=', Carbon::now()->subDays(1))
+                        ->where('date_retour', '<=', Carbon::now()->addDays(1))
+                        ->get();
         
-        Mail::to($user->email)->send(new ReminderEmail($userName));
+        $pastEmprunts = Emprunt::where('date_retour', '<', Carbon::now())
+                ->get();
+
+        $emprunts = $futureEmprunts->merge($pastEmprunts);
+
+        $users = [];
+
+        foreach ($emprunts as $emprunt) {
+            $user = $emprunt->user;
+            if (!in_array($user, $users)) {
+                $users[] = $user;
+            }
+        }
+
+        return view('admin.reminder-emails')->with('users', $users);
     }
 
-    return redirect()->back()->with('success', 'Reminder emails sent successfully!');
-}
+    public function sendEmails(Request $request)
+    {
 
 
+        $userIds = $request->input('users');
+        $users = User::whereIn('id', $userIds)->get();
+
+        foreach ($users as $user) {
+            $userName = $user->name;
+
+            Mail::to($user->email)->send(new ReminderEmail($userName));
+        }
+
+        return redirect()->back()->with('success', 'Reminder emails sent successfully!');
+    }
+    
 }

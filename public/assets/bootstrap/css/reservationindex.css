@@ -1,73 +1,169 @@
-body{
-    background: #DAF5FF;
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating){
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.intro h1{
+    text-align: center;
+    color: #5660e6;
+    font-family: Rockwell;
+    padding-bottom: 20px;
+}
+
+.login-link {
+    background-color: white;
+    border-radius: 10%;
+    height: 40px;
+    width: 150px;
+    text-align: center;
   }
-  #mainNav img{
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-  }
-  
-  #mainNav .navbar-nav .nav-item .nav-link{
-    color:#f7f7f7;
-  }
-  
-  #mainNav{
-    height: 100px;
-    background-color:#0A4D68;
-  }
-  
-  html::-webkit-scrollbar {
-    width: 1rem;
-  }
-  
-  html::-webkit-scrollbar-track {
-    background-color: #ADE4DB;
-  }
-  
-  html::-webkit-scrollbar-thumb {
-    background-color: #088395;
-  }
-  
-  .footer{
-    background-color:#0A4D68;
+ #mainNav #login-item a{
+    color:#000000;
   }
 
   .create{
-    height: 100vh;
+    min-height: 100vh;
+  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 20px;
+  background-color: rgb(213, 221, 247);
+}
+
+td {
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  border:rgba(84, 83, 83, 0);
+  color:rgb(26, 38, 142);
+}
+td img{
+    box-shadow: 4px 4px 8px rgb(91, 91, 91);
+}
+th:first-child {
+  border-bottom: none;
+}
+
+th:not(:first-child) {
+    border-bottom: 2px solid rgb(41, 50, 180);
+}
+th {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 20px;
+  color:rgb(0, 0, 0);
+}
+tr{
+    color:rgba(255, 255, 255, 0);
+}
+
+.rechercherbtn:hover{
+    background-color: rgb(121, 127, 180) !important;
+    color:#ffffff !important;
+}
+
+/* Responsive table styles */
+@media (max-width: 576px) {
+  /* Stack the rows on small screens */
+  tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+  
+  /* Hide the table headers */
+
+thead{
+    display: none;
+}
+  
+  /* Add some padding to the top of each data cell */
+  td {
+    padding-top: 1rem;
+    text-align: center;
+  }
+  td:first-child {
+  background-color: #697ce7;
+}
+  
+  /* Add borders to the data cells */
+  td:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  
+  /* Add borders to the last data cell in each row */
+  td:last-child {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Add a little extra padding to the last data cell in each row */
+  td:last-child {
+    padding-bottom: 1rem;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    max-width: 800px;
+  footer{
+    display: none;
   }
-  
-  th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #ddd;
+}
+
+
+.input-container {
+  width: 80%;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: calc(50% + 5px);
+  transform: translateY(calc(-50% - 5px));
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  transition: .2s linear;
+  border: 2.5px solid black;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.input:focus {
+  outline: none;
+  border: 0.5px solid black;
+  box-shadow: -5px -5px 0px black;
+}
+
+.input-container:hover > .icon {
+  animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    transform: translateY(calc(-50% - 5px)) scale(1);
   }
-  
-  th {
-    background-color: #f2f2f2;
+
+  50% {
+    transform: translateY(calc(-50% - 5px)) scale(1.1);
   }
-  
-  @media screen and (max-width: 768px) {
-    table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
+}
+
+@media (max-width: 767px) { 
+    .input-container {
+        width: 100%;
+        position: relative;
     }
-  
-    th {
-      position: sticky;
-      top: 0;
-      background-color: #f2f2f2;
+    
+    .input-group {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
-  
-    td, th {
-      min-width: 100px;
+    .input-group .btn{
+        margin-top: 10px !important;
     }
-  }
-  
+}

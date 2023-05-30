@@ -26,3 +26,8 @@ $('textarea').focus(function () { // Au clic sur le textarea Message
     $(this).parent().css('margin-bottom','100px'); // Rajout de la marge pour baisser le bouton submit
   }
 });
+
+function toggleDropdown() {
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.classList.toggle('show');
+}

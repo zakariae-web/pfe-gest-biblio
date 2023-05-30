@@ -15,12 +15,20 @@ $(document).ready(function() {
   
     thumbnails.slick({
       infinite: true,
-      slidesToShow: 5,
+      slidesToShow: 7,
       slidesToScroll: 1,
       asNavFor: slider,
       dots: false,
       centerMode: true,
-      focusOnSelect: true
+      focusOnSelect: true,
+      responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3
+      }
+    }
+  ]
     });
   
     thumbnail.on('click', function() {
@@ -30,4 +38,3 @@ $(document).ready(function() {
       slider.slick('slickGoTo', slideIndex);
     });
   });
-

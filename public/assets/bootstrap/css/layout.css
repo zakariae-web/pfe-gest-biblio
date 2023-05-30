@@ -1,0 +1,113 @@
+body{
+    background: linear-gradient(rgb(246, 246, 246), rgb(246, 246, 246));
+}
+
+ #mainNav img{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+#mainNav{
+    height:auto;
+    background-color:rgb(246, 246, 246);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    text-transform: none;
+    font-size: 1rem;
+}
+#mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: rgb(56, 56, 56);
+    font-weight: 800;
+    text-transform: none;
+}
+.navbar-toggler{
+    color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+#mainNav .navbar-nav .nav-item {
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+.login-link {
+       width: 150px;
+    height: 50px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background-color: #5660e6;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #6992ea98;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+    text-align: center;
+  }
+
+  .login-link:hover{
+          width: 150px;
+    height: 50px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background-color: #7e84de;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #6992ea98;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+  }
+ #mainNav #login-item a{
+    color:#ffffff;
+  }
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,#a5a3a3, #3b25e0);
+    }
+
+.copied {
+    color: rgb(48, 63, 194);
+}
+footer{
+ background-color: #000000 !important;
+}
+
+  @media (max-width: 767px) {
+  .offcanvas {
+      background: linear-gradient(to bottom, rgb(246, 246, 246), rgb(207, 207, 207));
+  }
+}
+
+.site-btn{
+    color: #fff;
+    background-color: #5660e6;
+    border-color: #5660e6;
+}
+
+.site-btn:hover{
+    color: #ffffff;
+    background-color: #7e84d8;
+    border-color: #7e84d8;
+}

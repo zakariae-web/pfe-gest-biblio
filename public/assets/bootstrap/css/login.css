@@ -1,40 +1,12 @@
-body{
-    background: #DAF5FF;
+
+ #mainNav #login-item a{
+    color:#000000;
   }
-  #mainNav img{
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-  }
-  
-  #mainNav .navbar-nav .nav-item .nav-link{
-    color:#f7f7f7;
-  }
-  
-  #mainNav{
-    width: 100%;
-    height: 100px;
-    background-color:#0A4D68;
-  }
-  
-  html::-webkit-scrollbar {
-    width: 1rem;
-  }
-  
-  html::-webkit-scrollbar-track {
-    background-color: #ADE4DB;
-  }
-  
-  html::-webkit-scrollbar-thumb {
-    background-color: #088395;
-  }
-  
-  .footer{
-    background-color:#0A4D68;
-  }
+
 
   .create{
     height: 100vh;
+        overflow: hidden;
   }
 
   /*********** login ************/
@@ -51,11 +23,26 @@ body{
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
   }
+
+    @media (max-width: 767px) {
+   .login-box {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 350px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+}
   
   .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
-    color: #fff;
+    color: #000000;
     text-align: center;
   }
   
@@ -72,7 +59,7 @@ body{
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
-    background: transparent;
+    background: #000000ba;
   }
   .login-box .user-box label {
     position: absolute;
@@ -80,7 +67,7 @@ body{
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     pointer-events: none;
     transition: .5s;
   }
@@ -93,108 +80,67 @@ body{
     font-size: 12px;
   }
   
-  button {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #37306B;
-    color: #ffffff;
-    font-size: 18px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-  }
-  
-  button:hover {
-    background: #03e8f400;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 100px #03e9f4;
-  }
-  
-  button span {
-    position: absolute;
-    display: block;
-  }
-  
-  button span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
-    animation: btn-anim1 1s linear infinite;
-  }
-  
-  @keyframes btn-anim1 {
-    0% {
-      left: -100%;
-    }
-    50%,100% {
-      left: 100%;
-    }
-  }
-  
-  button span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
-    animation: btn-anim2 1s linear infinite;
-    animation-delay: .25s
-  }
-  
-  @keyframes btn-anim2 {
-    0% {
-      top: -100%;
-    }
-    50%,100% {
-      top: 100%;
-    }
-  }
-  
-  button span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
-    animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
-  }
-  
-  @keyframes btn-anim3 {
-    0% {
-      right: -100%;
-    }
-    50%,100% {
-      right: 100%;
-    }
-  }
-  
-  button span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
-    animation: btn-anim4 1s linear infinite;
-    animation-delay: .75s
-  }
-  
-  @keyframes btn-anim4 {
-    0% {
-      bottom: -100%;
-    }
-    50%,100% {
-      bottom: 100%;
-    }
+    .cssbuttons-io-button button {
+    width: 320px;
+    height: 50px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background-color: #5660e6;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #6992ea98;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
   }
 
+  .cssbuttons-io-button button:hover {
+    width: 320px;
+    height: 50px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background-color: #787ed8;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #6992ea98;
+    letter-spacing: 0.05em;
+  }
+  
+
+.mdp a{
+  color:#ffffff;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.rememberme label{
+    color:#ffffff;
+}
+
+.password-toggle {
+        position: relative;
+    }
+
+    .btn-toggle {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .btn-toggle:focus {
+        outline: none;
+    }

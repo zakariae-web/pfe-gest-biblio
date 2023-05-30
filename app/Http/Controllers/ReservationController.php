@@ -55,6 +55,11 @@ class ReservationController extends Controller
         $user_id = Auth::id();
         $user = User::find($user_id);
     
+         $existingReservation = $user->reservations()->where('document_id', $request->input('document_id'))->first();
+        if ($existingReservation) {
+            return redirect()->back()->with('error', 'Vous avez déjà réservé ce livre.');
+        }
+        
         // Récupérer le type d'utilisateur
         $user_type = $user->role;
         $max_reservations = 2;

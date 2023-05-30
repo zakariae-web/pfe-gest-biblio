@@ -1,37 +1,68 @@
-body{
-    background: #DAF5FF;
+
+.login-link {
+    background-color: white;
+    border-radius: 10%;
+    height: 40px;
+    width: 150px;
+    text-align: center;
   }
-  #mainNav img{
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-  }
-  
-  #mainNav .navbar-nav .nav-item .nav-link{
-    color:#f7f7f7;
-  }
-  
-  #mainNav{
-    height: 100px;
-    background-color:#0A4D68;
-  }
-  
-  html::-webkit-scrollbar {
-    width: 1rem;
-  }
-  
-  html::-webkit-scrollbar-track {
-    background-color: #ADE4DB;
-  }
-  
-  html::-webkit-scrollbar-thumb {
-    background-color: #088395;
-  }
-  
-  .footer{
-    background-color:#0A4D68;
+ #mainNav #login-item a{
+    color:#000000;
   }
 
-  .create{
-    height: 100vh;
-  }
+
+.create {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #d8dbf5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+label {
+  display: block;
+  font-size: 18px;
+  margin-top: 20px;
+  color: #13158b;
+}
+
+input[type="text"], select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #13258b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3335b4;
+}

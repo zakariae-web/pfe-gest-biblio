@@ -13,6 +13,7 @@
         <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/bootstrap/css/layout.css">
         <link rel="stylesheet" href="/assets/bootstrap/css/documentsindex.css">
     </head>
 @endsection
